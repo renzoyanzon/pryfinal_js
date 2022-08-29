@@ -100,12 +100,27 @@ function mostrarFormularioClick (){
             contenedorFormulario.classList.add("open");
         }
     }
-    )
+    ) 
+
+
 }
 
 mostrarFormularioClick();
 
 
+//Para mejorar la experiencia del usuario se coloca un icono info para que me muestre información sobre los iconos
+let showInfo= document.querySelector("#mostrarInfo");
+showInfo.addEventListener("click",(e)=>{
+    e.preventDefault(e);
+    Toastify({
+        text: "1- Click para visualizar o quitar el formulario \n 2- Click para visualizar o quitar tabla \n 3- Click para visualizar o quitar grafico ",
+        className: "info",
+        duration: "5000",
+        style: {
+          background: "linear-gradient(to right, #00b09b, #96c93d)",
+        }
+      }).showToast();
+})
 
 
 cargarEventListeners();
@@ -173,10 +188,24 @@ function agregarFormulario (e){
     let listadoNuevo = new Listado (id,cuenta, fecha,categoria,importe,cotizacion,nota);
 
     listado.push(listadoNuevo);
-    localStorage.setItem("listado",JSON.stringify(listado));
-
-    cargarFormularioHTML(listadoNuevo);
-   
+    swal({
+        title: "Deseas agregar la operacion al listado?",
+        text: `Cuenta: ${cuenta}\n Fecha: ${fecha} \n Categoria: ${categoria}\n Importe: ${importe}`,
+        icon: "info",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+          swal(`La operación ${cuenta} fue agregada al listado`, {
+            icon: "success",
+          });
+          localStorage.setItem("listado",JSON.stringify(listado));
+          cargarFormularioHTML(listadoNuevo);
+        } else {
+          swal("No agregó nada al listado");
+        }
+      });   
 }
 
 
