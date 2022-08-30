@@ -323,7 +323,7 @@ console.log(listado[1].fecha);
 
 let categoriaSuper = listado.filter((el)=> el.categoria =="Supermercado");
 let categoriaKiosco = listado.filter((el)=> el.categoria =="Kiosco");
-let categoriaServicios = listado.filter((el)=> el.categoria =="Servicio");
+let categoriaServicios = listado.filter((el)=> el.categoria =="Servicios");
 let categoriaHogar = listado.filter((el)=> el.categoria =="Hogar");
 let categoriaEntretenimiento = listado.filter((el)=> el.categoria =="Entretenimiento");
 let categoriaTransporte = listado.filter((el)=> el.categoria =="Transporte");
@@ -332,19 +332,13 @@ let categoriaViajes = listado.filter((el)=> el.categoria =="Viajes");
 
 sumaCategoriaSuper = categoriaSuper.reduce ((acumulador,el) => acumulador + el.importe,0);
 sumaCategoriaKiosco = categoriaKiosco.reduce ((acumulador,el) => acumulador + el.importe,0);
-sumaCategoriaServicios = categoriaServicios.reduce ((acumulador,el) => acumulador + el.importe,0);
+sumaCategoriaServicios = categoriaServicios.reduce((acumulador,el) => acumulador + el.importe,0);
+console.log(sumaCategoriaServicios)
 sumaCategoriaHogar = categoriaHogar.reduce ((acumulador,el) => acumulador + el.importe,0);
 sumaCategoriaEntretenimiento = categoriaEntretenimiento.reduce ((acumulador,el) => acumulador + el.importe,0);
 sumaCategoriaTransporte = categoriaTransporte.reduce ((acumulador,el) => acumulador + el.importe,0);
 sumaCategoriaDeportes = categoriaDeportes.reduce ((acumulador,el) => acumulador + el.importe,0);
 sumaCategoriaViajes = categoriaViajes.reduce ((acumulador,el) => acumulador + el.importe,0);
-
-
-console.log(sumaCategoriaSuper)
-
-
-/* let filtro = listado.filter((el)=> el.categoria == "Supermercado");
-sumaCategorias = filtro.reduce ((acumulador,el) => acumulador + el.importe,0); */
 
 
 const grafico = document.querySelector("#grafico");
@@ -364,6 +358,7 @@ function mostrarGraficoClick(){
 }
 
 mostrarGraficoClick()
+
 
 const datoGraficoGastos = {
     label: "Gastos por categoría",
