@@ -317,8 +317,6 @@ function eliminarOperacionStorage(idOperacion){
 }
 
 
-console.log(listado[1].fecha);
-
 //Definimos un array para obtener el valor total del gasto por categoría
 
 let categoriaSuper = listado.filter((el)=> el.categoria =="Supermercado");
